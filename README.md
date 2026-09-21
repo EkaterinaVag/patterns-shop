@@ -2,16 +2,18 @@
 
 Каталог выкроек для шитья. Портфолио-проект на современном фронтенд-стеке.
 
+
 ## Стек
 
 | Категория | Технология |
 |-----------|------------|
 | Фреймворк | Next.js 16 (App Router) + TypeScript (strict) |
 | Состояние | Redux Toolkit + RTK Query |
-| Стили | Tailwind CSS + shadcn/ui |
+| Стили | Tailwind CSS |
 | Валидация | Zod |
-| Тесты | Vitest + React Testing Library + MSW + Playwright |
+| Тесты | Vitest + React Testing Library + Playwright |
 | Сборщик | Webpack (Turbopack заблокирован корпоративной политикой) |
+
 
 ## Требования к окружению
 
@@ -37,6 +39,7 @@ git clone <url-репозитория>
 cd patterns-shop
 npm install
 ```
+
 
 ## Команды проекта
 
