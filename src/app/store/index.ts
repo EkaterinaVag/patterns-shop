@@ -1,0 +1,1 @@
+// Настройка Redux store (makeStore)
