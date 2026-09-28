@@ -1,26 +1,38 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@theme {
+  --color-bg: #ffffff;
+  --color-cream: #fdf8f5;
+  --color-cream-deep: #faefe8;
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  --color-blush: #f4a88b;
+  --color-blush-hover: #e89474;
+  --color-blush-soft: #fadcd0;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-ink: #443d3a;
+  --color-muted: #8c8480;
+  --color-subtle: #b5ada9;
+
+  --color-border: #f0eae6;
+
+  --shadow-card: 0 8px 24px rgba(68, 61, 58, 0.06);
+  --shadow-card-hover: 0 16px 32px rgba(244, 168, 139, 0.15);
+  --shadow-button: 0 4px 14px rgba(244, 168, 139, 0.35);
+
+  --font-sans: 'Manrope', system-ui, sans-serif;
+  --font-serif: 'Playfair Display', Georgia, serif;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-serif), 'Playfair Display', Georgia, serif;
+  color: var(--color-ink);
+  font-weight: 600;
 }
