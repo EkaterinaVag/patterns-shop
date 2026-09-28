@@ -21,7 +21,7 @@ export function Header() {
           <span className="text-blush"> Patterns</span>
         </Link>
 
-        <nav className="flex gap-8 text-sm font-medium">
+        <nav className="hidden md:flex gap-8 text-sm font-medium">
           {NAV_ITEMS.map((item) => (
             <Link
               key={item.href}
