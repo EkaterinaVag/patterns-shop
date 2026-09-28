@@ -9,8 +9,10 @@ const NAV_ITEMS = [
 
 export function Header() {
   return (
-    <header className="bg-bg border-b border-border">
-      <div className="mx-auto max-w-7xl px-4 h-16 flex items-center justify-between">
+    <header className="sticky top-0 z-50
+        bg-white/75 backdrop-blur-md
+        border-b border-border">
+      <div className="mx-auto max-w-7xl px-4 h-18 flex items-center justify-between">
         <Link
           href="/"
           className="text-2xl font-bold tracking-tight font-serif"
