@@ -8,6 +8,7 @@ const MOCK_PATTERNS: Pattern[] = [
   { id: '1', title: 'Платье для куклы', image: '/picture.jpg', price: 250, difficulty: 'Легкая', duration: 2, badges: ['Хит'] },
   { id: '2', title: 'Комбинезон детский', image: '/picture.jpg', price: 350, difficulty: 'Средняя', duration: 2, badges: [] },
   { id: '3', title: 'Пальто зимнее', image: '/picture.jpg', price: 550, difficulty: 'Высокая', duration: 2, badges: [] },
+  { id: '4', title: 'Ещё один макет', image: '/picture.jpg', price: 350, difficulty: 'Средняя', duration: 5, badges: ['Новинка'] },
 ];
 
 export function MainPage() {
@@ -74,7 +75,34 @@ export function MainPage() {
       </section>
 
       <section className="py-8">
-        <h2 className="text-2xl font-semibold mb-6">Популярное</h2>
+        <div className="flex items-center justify-between mb-8">
+          <h2 className="text-3xl">Популярные шаблоны</h2>
+          <Link
+            href="/patterns?sort=popular"
+            className="text-blush hover:text-blush-hover transition-colors text-sm font-medium whitespace-nowrap"
+          >
+            Посмотреть всё →
+          </Link>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {MOCK_PATTERNS.map((pattern) => (
+            <PatternCard key={pattern.id} pattern={pattern} />
+          ))}
+        </div>
+      </section>
+
+      <section className="py-8">
+        <div className="flex items-center justify-between mb-8">
+          <h2 className="text-3xl">Новые выкройки</h2>
+          <Link
+            href="/patterns?sort=new"
+            className="text-blush hover:text-blush-hover transition-colors text-sm font-medium whitespace-nowrap"
+          >
+            Посмотреть всё →
+          </Link>
+        </div>
+
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {MOCK_PATTERNS.map((pattern) => (
             <PatternCard key={pattern.id} pattern={pattern} />
