@@ -29,7 +29,7 @@ export function Footer() {
                         </p>
                     </div>
 
-                    <div>
+                    <div className='tracking-wide'>
                         <h4 className="font-semibold text-ink mb-4">Навигация</h4>
                         <ul className="space-y-3">
                             {NAV_LINKS.map((link) => (
@@ -45,7 +45,7 @@ export function Footer() {
                         </ul>
                     </div>
 
-                    <div>
+                    <div className='tracking-wide'>
                         <h4 className="font-semibold text-ink mb-4">Помощь</h4>
                         <ul className="space-y-3">
                             {HELP_LINKS.map((link) => (
