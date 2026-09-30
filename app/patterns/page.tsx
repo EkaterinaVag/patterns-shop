@@ -1,1 +1,1 @@
-export { PatternsPage as default } from "@/pages/patterns";
+export { CatalogPage as default } from "@/pages/catalog";
