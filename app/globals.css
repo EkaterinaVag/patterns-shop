@@ -4,6 +4,7 @@
   --color-bg: #ffffff;
   --color-cream: #fdf8f5;
   --color-cream-deep: #faefe8;
+  --color-cream-soft: #fdfbf9;
 
   --color-blush: #f4a88b;
   --color-blush-hover: #e89474;
@@ -12,6 +13,7 @@
   --color-ink: #443d3a;
   --color-muted: #8c8480;
   --color-subtle: #b5ada9;
+  --color-text: #2c2c2c;
 
   --color-border: #f0eae6;
 
@@ -30,8 +32,7 @@ body {
 }
 
 h1,
-h2,
-h3 {
+h2 {
   font-family: var(--font-serif), 'Playfair Display', Georgia, serif;
   color: var(--color-ink);
   font-weight: 600;
