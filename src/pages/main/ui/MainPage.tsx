@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { PatternCard } from '@/entities/pattern';
-import { MOCK_PATTERNS } from '@/shared/api/mocks/patterns';
+import { MOCK_PATTERNS } from '@/shared/api/';
 
 export function MainPage() {
   return (
@@ -96,7 +96,7 @@ export function MainPage() {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {MOCK_PATTERNS.map((pattern) => (
+          {MOCK_PATTERNS.slice(0, 4).map((pattern) => (
             <PatternCard key={pattern.id} pattern={pattern} />
           ))}
         </div>

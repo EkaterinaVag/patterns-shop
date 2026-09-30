@@ -1,0 +1,1 @@
+export { MOCK_PATTERNS } from './mocks/patterns';

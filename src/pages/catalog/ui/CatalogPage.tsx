@@ -1,8 +1,9 @@
-import { BreadcrumbItem, Breadcrumbs } from '@/shared/ui/Breadcrumbs';
 import { FilterSidebar } from './FilterSidebar';
 import { CatalogToolbar } from './CatalogToolbar';
 
-import { MOCK_PATTERNS } from '@/shared/api/mocks/patterns';
+import { BreadcrumbItem, Breadcrumbs } from '@/shared/ui';
+import { MOCK_PATTERNS } from '@/shared/api';
+import { PatternCard } from '@/entities/pattern';
 
 const breadcrumbs: BreadcrumbItem[] = [
     { label: 'Главная', href: '/' },
@@ -40,6 +41,11 @@ export function CatalogPage() {
 
                         <div>
                             <CatalogToolbar count={MOCK_PATTERNS.length} />
+                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                                {MOCK_PATTERNS.map((pattern) => (
+                                    <PatternCard key={pattern.id} pattern={pattern} />
+                                ))}
+                            </div>
                         </div>
                     </div>
                 </div>

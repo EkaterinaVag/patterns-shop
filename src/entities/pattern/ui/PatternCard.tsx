@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import type { Pattern } from '../model/types';
+import type { Pattern } from '../index';
 
 interface PatternCardProps {
     pattern: Pattern;

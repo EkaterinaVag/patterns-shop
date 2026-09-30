@@ -1,4 +1,3 @@
-// src/widgets/Footer/ui/Footer.tsx
 import Link from 'next/link';
 
 const NAV_LINKS = [
