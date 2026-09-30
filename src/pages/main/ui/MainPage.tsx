@@ -1,15 +1,7 @@
-import { PatternCard } from '@/entities/pattern';
-import { Pattern } from '@/entities/pattern/model/types';
-
 import Image from 'next/image';
 import Link from 'next/link';
-
-const MOCK_PATTERNS: Pattern[] = [
-  { id: '1', title: 'Платье для куклы', image: '/picture.jpg', price: 250, difficulty: 'Легкая', duration: 2, badges: ['Хит'] },
-  { id: '2', title: 'Комбинезон детский', image: '/picture.jpg', price: 350, difficulty: 'Средняя', duration: 2, badges: [] },
-  { id: '3', title: 'Пальто зимнее', image: '/picture.jpg', price: 550, difficulty: 'Высокая', duration: 2, badges: [] },
-  { id: '4', title: 'Ещё один макет', image: '/picture.jpg', price: 350, difficulty: 'Средняя', duration: 5, badges: ['Новинка'] },
-];
+import { PatternCard } from '@/entities/pattern';
+import { MOCK_PATTERNS } from '@/shared/api/mocks/patterns';
 
 export function MainPage() {
   return (
@@ -86,7 +78,7 @@ export function MainPage() {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {MOCK_PATTERNS.map((pattern) => (
+          {MOCK_PATTERNS.slice(0, 4).map((pattern) => (
             <PatternCard key={pattern.id} pattern={pattern} />
           ))}
         </div>
