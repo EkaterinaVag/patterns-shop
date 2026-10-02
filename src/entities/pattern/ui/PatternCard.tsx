@@ -8,6 +8,13 @@ interface PatternCardProps {
     pattern: Pattern;
 }
 
+const difficultyLabels = {
+    beginner: 'Начальный',
+    easy: 'Легкий',
+    medium: 'Средний',
+    hard: 'Высокий',
+};
+
 export function PatternCard({ pattern }: PatternCardProps) {
     return (
         <article
@@ -68,7 +75,7 @@ export function PatternCard({ pattern }: PatternCardProps) {
                     mb-2 pb-3
                     border-b border-border
                     ">
-                    <span>Сложность: {pattern.difficulty}</span>
+                    <span>Сложность: {difficultyLabels[pattern.difficulty]}</span>
                     <span>⏱ {pattern.duration ?? 2} часа</span>
                 </div>
 
