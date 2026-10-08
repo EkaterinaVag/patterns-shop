@@ -1,7 +1,7 @@
 import { z } from "zod";
 
-const DifficultyEnum = z.enum(['beginner', 'easy', 'medium', 'hard']);
-const CategoryEnum = z.enum(['animals', 'flowers', 'food', 'decor', 'toys']);
+export const DifficultyEnum = z.enum(['beginner', 'easy', 'medium', 'hard']);
+export const CategoryEnum = z.enum(['animals', 'flowers', 'food', 'decor', 'toys']);
 
 export const PatternSchema = z.object({
   id: z.string().min(1),
