@@ -1,7 +1,6 @@
 import { z } from "zod";
-import { CategoryEnum, DifficultyEnum } from "@/entities/pattern";
+import { CategoryEnum, DifficultyEnum, DurationEnum } from "@/entities/pattern";
 
-const DurationEnum = z.enum(['1h', '2-3h', 'day'])
 const SortEnum = z.enum(['popular', 'new', 'price-asc', 'price-desc'])
 
 export const FilterSchema = z.object({

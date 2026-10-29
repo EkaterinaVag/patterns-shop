@@ -3,24 +3,24 @@ import { FilterPill } from './filters/FilterPill';
 import { SearchInput } from './filters/SearchInput';
 
 const CATEGORIES = [
-  { id: 'cat-animals', label: 'Животные' },
-  { id: 'cat-flowers', label: 'Цветы' },
-  { id: 'cat-food', label: 'Еда' },
-  { id: 'cat-decor', label: 'Декор' },
-  { id: 'cat-toys', label: 'Игрушки' },
+  { id: 'animals', label: 'Животные' },
+  { id: 'flowers', label: 'Цветы' },
+  { id: 'food', label: 'Еда' },
+  { id: 'decor', label: 'Декор' },
+  { id: 'toys', label: 'Игрушки' },
 ] as const;
 
 const DIFFICULTIES = [
-  { id: 'diff-beginner', label: 'Начальный' },
-  { id: 'diff-easy', label: 'Легкий' },
-  { id: 'diff-medium', label: 'Средний' },
-  { id: 'diff-hard', label: 'Высокий' },
+  { id: 'beginner', label: 'Начальный' },
+  { id: 'easy', label: 'Легкий' },
+  { id: 'medium', label: 'Средний' },
+  { id: 'hard', label: 'Высокий' },
 ] as const;
 
 const DURATIONS = [
-  { id: 'time-1h', label: 'до 1 часа' },
-  { id: 'time-2h', label: '2-3 часа' },
-  { id: 'time-day', label: 'Весь день' },
+  { id: '1h', label: 'до 1 часа' },
+  { id: '2-3h', label: '2-3 часа' },
+  { id: 'day', label: 'Весь день' },
 ] as const;
 
 export function FilterSidebar() {

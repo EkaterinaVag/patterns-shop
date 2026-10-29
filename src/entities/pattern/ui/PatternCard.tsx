@@ -15,6 +15,12 @@ const difficultyLabels = {
     hard: 'Высокий',
 };
 
+const durationLabels = {
+    '1h': 'до 1 часа',
+    '2-3h': '2–3 часа',
+    'day': 'весь день',
+};
+
 export function PatternCard({ pattern }: PatternCardProps) {
     return (
         <article
@@ -76,7 +82,7 @@ export function PatternCard({ pattern }: PatternCardProps) {
                     border-b border-border
                     ">
                     <span>Сложность: {difficultyLabels[pattern.difficulty]}</span>
-                    <span>⏱ {pattern.duration ?? 2} часа</span>
+                    <span>⏱ {durationLabels[pattern.duration]}</span>
                 </div>
 
                 <div className="flex items-baseline justify-between mt-auto mb-4">
