@@ -1,11 +1,9 @@
 'use client';
 
-import { useState } from 'react';
-
-type ViewMode = 'grid' | 'list';
+import { useViewStore } from '@/features/view-toggle';
 
 export function ViewToggle() {
-  const [view, setView] = useState<ViewMode>('grid');
+  const { view, setView } = useViewStore();
 
   return (
     <div className="flex items-center">

@@ -37,6 +37,7 @@ export function CatalogPage() {
             <section className="py-12">
                 <div className="mx-auto max-w-7xl px-4">
                     <div className="grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-8">
+                        {/* TODO: придумать как рендерить фильтры на мобилке и как коректно скрыть блок на десктопе */}
                         <FilterSidebar />
 
                         <div>

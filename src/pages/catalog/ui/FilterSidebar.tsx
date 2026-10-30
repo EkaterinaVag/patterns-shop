@@ -1,31 +1,13 @@
+import { CATEGORIES, DIFFICULTIES, DURATIONS } from '@/features/filter-patterns/model/constants';
 import { FilterGroup } from './filters/FilterGroup';
 import { FilterPill } from './filters/FilterPill';
 import { SearchInput } from './filters/SearchInput';
 
-const CATEGORIES = [
-  { id: 'animals', label: 'Животные' },
-  { id: 'flowers', label: 'Цветы' },
-  { id: 'food', label: 'Еда' },
-  { id: 'decor', label: 'Декор' },
-  { id: 'toys', label: 'Игрушки' },
-] as const;
-
-const DIFFICULTIES = [
-  { id: 'beginner', label: 'Начальный' },
-  { id: 'easy', label: 'Легкий' },
-  { id: 'medium', label: 'Средний' },
-  { id: 'hard', label: 'Высокий' },
-] as const;
-
-const DURATIONS = [
-  { id: '1h', label: 'до 1 часа' },
-  { id: '2-3h', label: '2-3 часа' },
-  { id: 'day', label: 'Весь день' },
-] as const;
-
 export function FilterSidebar() {
   return (
     <aside className="
+      hidden
+      md:block
       bg-bg
       rounded-3xl
       border border-border
