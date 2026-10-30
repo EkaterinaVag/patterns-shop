@@ -7,7 +7,7 @@ interface FilterButtonProps {
 export default function FilterButton({ handleClick }: FilterButtonProps) {
     return (
         <button className='
-          md:hidden
+          lg:hidden
           flex items-center justify-between
           px-5 py-2.5 rounded-full
           border border-border bg-bg
