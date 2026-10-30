@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
 import BurgerButton from './BurgerButton'
-import MobileMenu from './MobileMenu';
+import MobileMenu, { MOBILE_MENU_ID } from './MobileMenu';
 import { NAV_ITEMS } from '@/widgets/header/model/navigation';
 
 export function Header() {
@@ -32,7 +32,7 @@ export function Header() {
           <span className="text-blush"> Patterns</span>
         </Link>
 
-        <nav className="hidden md:flex gap-8 text-sm font-medium tracking-wide">
+        <nav aria-label="Основная навигация" className="hidden md:flex gap-8 text-sm font-medium tracking-wide">
           {NAV_ITEMS.map((item) => (
             <Link
               key={item.href}
@@ -44,7 +44,7 @@ export function Header() {
           ))}
         </nav>
 
-        <BurgerButton handleClick={() => setIsMenuOpen(true)} />
+        <BurgerButton isOpen={isMenuOpen} controls={MOBILE_MENU_ID} handleClick={() => setIsMenuOpen((open) => !open)} />
         <MobileMenu isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
       </div>
     </header>

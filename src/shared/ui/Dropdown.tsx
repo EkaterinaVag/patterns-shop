@@ -51,7 +51,7 @@ export function Dropdown({
           cursor-pointer
           transition-colors
           hover:border-blush
-          focus:outline-none focus:border-blush
+          focus-visible:outline-none
           min-w-[200px]
         "
       >
@@ -106,7 +106,7 @@ export function Dropdown({
                 transition-colors
                 ${
                   isActive
-                    ? 'text-blush font-semibold'
+                    ? 'text-blush-strong font-semibold'
                     : 'text-ink hover:bg-cream'
                 }
               `}

@@ -21,7 +21,7 @@ export function Footer() {
                     <div>
                         <div className="font-serif text-2xl text-ink mb-4">
                             <span>Felt</span>
-                            <span className="text-blush"> Patterns</span>
+                            <span className="text-blush-strong"> Patterns</span>
                         </div>
                         <p className="text-sm text-muted max-w-xs">
                             Создаем уют своими руками с 2020 года.
@@ -35,7 +35,7 @@ export function Footer() {
                                 <li key={link.href}>
                                     <Link
                                         href={link.href}
-                                        className="text-sm text-muted hover:text-blush transition-colors"
+                                        className="text-sm text-muted hover:text-blush-strong transition-colors"
                                     >
                                         {link.label}
                                     </Link>
@@ -51,7 +51,7 @@ export function Footer() {
                                 <li key={link.href}>
                                     <Link
                                         href={link.href}
-                                        className="text-sm text-muted hover:text-blush transition-colors"
+                                        className="text-sm text-muted hover:text-blush-strong transition-colors"
                                     >
                                         {link.label}
                                     </Link>

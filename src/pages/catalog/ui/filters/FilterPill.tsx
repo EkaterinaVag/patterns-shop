@@ -16,8 +16,9 @@ export function FilterPill({ id, label, name }: FilterPillProps) {
         text-sm text-ink
         cursor-pointer
         transition-colors
-        hover:border-blush hover:text-blush
+        hover:border-blush hover:text-blush-strong
         has-[:checked]:bg-blush has-[:checked]:text-ink has-[:checked]:border-blush
+        has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-blush-strong has-[:focus-visible]:ring-offset-2
       "
     >
       <input

@@ -1,12 +1,18 @@
 'use client';
 
 interface FilterButtonProps {
+    isOpen: boolean;
+    controls: string;
     handleClick: () => void;
 }
 
-export default function FilterButton({ handleClick }: FilterButtonProps) {
+export default function FilterButton({ isOpen, controls, handleClick }: FilterButtonProps) {
     return (
-        <button className='
+        <button
+            type="button"
+            aria-expanded={isOpen}
+            aria-controls={controls}
+            className='
           lg:hidden
           flex items-center justify-between
           px-5 py-2.5 rounded-full
@@ -15,7 +21,8 @@ export default function FilterButton({ handleClick }: FilterButtonProps) {
           cursor-pointer
           transition-colors
           hover:border-blush
-          focus:outline-none focus:border-blush
+          focus-visible:outline-none
+          focus-visible:ring-2 focus-visible:ring-blush-strong focus-visible:ring-offset-2
         ' onClick={handleClick}>
             Фильтры
         </button>

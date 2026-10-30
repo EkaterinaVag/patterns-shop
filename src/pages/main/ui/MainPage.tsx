@@ -71,7 +71,7 @@ export function MainPage() {
           <h2 className="text-3xl">Популярные шаблоны</h2>
           <Link
             href="/patterns?sort=popular"
-            className="text-blush hover:text-blush-hover transition-colors text-sm font-medium whitespace-nowrap"
+            className="text-blush-strong hover:text-ink transition-colors text-sm font-medium whitespace-nowrap"
           >
             Посмотреть всё →
           </Link>
@@ -89,7 +89,7 @@ export function MainPage() {
           <h2 className="text-3xl">Новые выкройки</h2>
           <Link
             href="/patterns?sort=new"
-            className="text-blush hover:text-blush-hover transition-colors text-sm font-medium whitespace-nowrap"
+            className="text-blush-strong hover:text-ink transition-colors text-sm font-medium whitespace-nowrap"
           >
             Посмотреть всё →
           </Link>

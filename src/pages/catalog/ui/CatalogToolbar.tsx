@@ -17,6 +17,8 @@ const SORT_OPTIONS = [
     { value: 'price-desc', label: 'По убыванию цены' },
 ]
 
+const FILTER_MODAL_ID = 'catalog-filters';
+
 export function CatalogToolbar({ count }: CatalogToolbarProps) {
     const [isFilterOpen, setIsFilterOpen] = useState(false)
 
@@ -32,7 +34,11 @@ export function CatalogToolbar({ count }: CatalogToolbarProps) {
     return (
         <div className="flex lg:items-center items-start justify-between mb-6 flex-wrap gap-4 border-b border-border pb-3 flex-col-reverse lg:flex-row">
             <div className="flex flex-wrap gap-2">
-                <FilterButton handleClick={() => { setIsFilterOpen(true) }} />
+                <FilterButton
+                    isOpen={isFilterOpen}
+                    controls={FILTER_MODAL_ID}
+                    handleClick={() => { setIsFilterOpen(true) }}
+                />
                 <Dropdown
                     options={SORT_OPTIONS}
                     defaultValue="popular"
@@ -51,7 +57,7 @@ export function CatalogToolbar({ count }: CatalogToolbarProps) {
                 <ViewToggle />
             </div>
 
-            {isFilterOpen && <FilterModal onClose={() => { setIsFilterOpen(false) }} />}
+            {isFilterOpen && <FilterModal id={FILTER_MODAL_ID} onClose={() => { setIsFilterOpen(false) }} />}
         </div>
     );
 }

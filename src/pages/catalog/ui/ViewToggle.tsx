@@ -17,7 +17,7 @@ export function ViewToggle() {
           p-2 rounded-lg
           cursor-pointer
           transition-colors
-          ${view === 'grid' ? 'text-blush' : 'text-muted hover:text-ink'}
+          ${view === 'grid' ? 'text-blush-strong' : 'text-muted hover:text-ink'}
         `}
       >
         <svg
@@ -47,7 +47,7 @@ export function ViewToggle() {
           p-2 rounded-lg
           cursor-pointer
           transition-colors
-          ${view === 'list' ? 'text-blush' : 'text-muted hover:text-ink'}
+          ${view === 'list' ? 'text-blush-strong' : 'text-muted hover:text-ink'}
         `}
       >
         <svg

@@ -20,7 +20,9 @@ export function SearchInput({ placeholder = 'Поиск по выкройкам'
       </svg>
 
       <input
-        type="text"
+        type="search"
+        name="search"
+        aria-label={placeholder}
         placeholder={placeholder}
         className="
           w-full

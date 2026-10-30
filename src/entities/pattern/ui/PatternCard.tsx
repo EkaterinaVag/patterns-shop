@@ -58,7 +58,7 @@ export function PatternCard({ pattern }: PatternCardProps) {
                     href={`/patterns/${pattern.id}`}
                     className="mb-3 block"
                 >
-                    <h3 className="text-xl line-clamp-2 group-hover:text-blush transition-colors">
+                    <h3 className="text-xl line-clamp-2 group-hover:text-blush-strong transition-colors">
                         {pattern.title}
                     </h3>
                 </Link>
