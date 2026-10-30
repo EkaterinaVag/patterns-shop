@@ -1,4 +1,10 @@
+'use client';
+
 import Link from 'next/link';
+import { useEffect, useState } from 'react';
+
+import BurgerButton from './BurgerButton'
+import MobileMenu from './MobileMenu';
 
 const NAV_ITEMS = [
   { href: '/', label: 'Главная' },
@@ -8,6 +14,17 @@ const NAV_ITEMS = [
 ] as const;
 
 export function Header() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => { document.body.style.overflow = ''; };
+  }, [isMenuOpen]);
+
   return (
     <header className="sticky top-0 z-50
         bg-white/75 backdrop-blur-md
@@ -32,6 +49,9 @@ export function Header() {
             </Link>
           ))}
         </nav>
+
+        <BurgerButton handleClick={() => setIsMenuOpen(true)} />
+        <MobileMenu isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
       </div>
     </header>
   );
