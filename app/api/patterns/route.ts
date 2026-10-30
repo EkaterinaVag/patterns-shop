@@ -30,11 +30,13 @@ export async function GET(request: NextRequest) {
     const start = (page - 1) * LIMIT;
     const items = filtered.slice(start, start + LIMIT);
 
-    return NextResponse.json<PaginatedResponse<Pattern>>({
+    const response: PaginatedResponse<Pattern> = {
         items,
         total: filtered.length,
         page,
         totalPages: Math.ceil(filtered.length / LIMIT),
         limit: LIMIT,
-    });
+    };
+
+    return NextResponse.json(response);
 }

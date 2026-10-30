@@ -95,7 +95,7 @@ export function PatternCard({ pattern }: PatternCardProps) {
                 <button
                     type="button"
                     onClick={() => {
-                        // TODO: переход на оплату
+                        // TODO: переход на оплату. вся логика долждна быть в features
                     }}
                     className="
                         w-full
