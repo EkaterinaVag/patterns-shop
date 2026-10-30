@@ -23,7 +23,7 @@ export function MainPage() {
               className="
               inline-block w-full md:w-auto
               bg-blush hover:bg-blush-hover
-              text-white font-bold text-center
+              text-ink font-bold text-center
               px-8 py-4 rounded-full
               shadow-button hover:shadow-button-hover
               transition-all duration-300

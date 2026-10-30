@@ -17,7 +17,7 @@ export function FilterPill({ id, label, name }: FilterPillProps) {
         cursor-pointer
         transition-colors
         hover:border-blush hover:text-blush
-        has-[:checked]:bg-blush has-[:checked]:text-white has-[:checked]:border-blush
+        has-[:checked]:bg-blush has-[:checked]:text-ink has-[:checked]:border-blush
       "
     >
       <input

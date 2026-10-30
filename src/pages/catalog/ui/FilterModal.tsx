@@ -55,7 +55,7 @@ export function FilterModal({ onClose }: FilterModalProps) {
         <div className="border-t border-border bg-bg p-4">
           <button
             onClick={onClose}
-            className="w-full bg-blush hover:bg-blush-hover text-white font-semibold py-3 rounded-full transition-colors cursor-pointer"
+            className="w-full bg-blush hover:bg-blush-hover text-ink font-semibold py-3 rounded-full transition-colors cursor-pointer"
           >
             Применить
           </button>

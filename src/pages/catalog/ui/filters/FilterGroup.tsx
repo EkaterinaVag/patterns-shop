@@ -7,13 +7,13 @@ interface FilterGroupProps {
 
 export function FilterGroup({ title, children }: FilterGroupProps) {
   return (
-    <div className="mb-6">
-      <h3 className="text-xs font-semibold uppercase tracking-wider text-muted mb-3">
+    <fieldset className="mb-6 min-w-0 border-0 p-0">
+      <legend className="mb-3 p-0 text-xs font-semibold uppercase tracking-wider text-muted">
         {title}
-      </h3>
+      </legend>
       <div className="flex flex-wrap gap-2">
         {children}
       </div>
-    </div>
+    </fieldset>
   );
 }

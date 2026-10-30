@@ -5,13 +5,7 @@ import { useEffect, useState } from 'react';
 
 import BurgerButton from './BurgerButton'
 import MobileMenu from './MobileMenu';
-
-const NAV_ITEMS = [
-  { href: '/', label: 'Главная' },
-  { href: '/patterns', label: 'Каталог выкроек' },
-  { href: '/blog', label: 'Блог' },
-  { href: '/contacts', label: 'Контакты' },
-] as const;
+import { NAV_ITEMS } from '@/widgets/header/model/navigation';
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);

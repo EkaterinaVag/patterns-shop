@@ -2,12 +2,7 @@
 
 import Link from 'next/link';
 
-const NAV_ITEMS = [
-    { href: '/', label: 'Главная' },
-    { href: '/patterns', label: 'Каталог выкроек' },
-    { href: '/blog', label: 'Блог' },
-    { href: '/contacts', label: 'Контакты' },
-] as const;
+import { NAV_ITEMS } from '@/widgets/header/model/navigation';
 
 interface MobileMenuProps {
     isOpen: boolean;

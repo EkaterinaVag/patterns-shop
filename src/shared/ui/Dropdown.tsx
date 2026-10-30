@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useId, useRef, useState } from 'react';
 
 export interface DropdownOption {
   value: string;
@@ -21,19 +21,28 @@ export function Dropdown({
   className,
 }: DropdownProps) {
   const [selected, setSelected] = useState(defaultValue ?? options[0]?.value ?? '');
+  const popoverRef = useRef<HTMLDivElement>(null);
+
+  const uid = useId().replace(/:/g, '');
+  const popoverId = `dropdown-${uid}`;
+  const anchorName = `--dropdown-${uid}`;
+
   const selectedLabel = options.find((o) => o.value === selected)?.label ?? '';
 
   function handleSelect(value: string) {
     setSelected(value);
     onChange?.(value);
+    popoverRef.current?.hidePopover();
   }
 
   return (
     <div className={`relative ${className ?? ''}`}>
       <button
         type="button"
-        popoverTarget="sort-dropdown"
+        popoverTarget={popoverId}
         popoverTargetAction="toggle"
+        aria-haspopup="listbox"
+        style={{ anchorName }}
         className="
           flex items-center justify-between
           px-5 py-2.5 rounded-full
@@ -44,7 +53,6 @@ export function Dropdown({
           hover:border-blush
           focus:outline-none focus:border-blush
           min-w-[200px]
-          [anchor-name:--sort-btn]
         "
       >
         <span>Сортировка:&nbsp;</span>
@@ -64,17 +72,19 @@ export function Dropdown({
       </button>
 
       <div
-        id="sort-dropdown"
+        ref={popoverRef}
+        id={popoverId}
         popover="auto"
         role="listbox"
+        aria-label="Сортировка"
+        style={{ positionAnchor: anchorName }}
         className="
           w-min min-w-[280px]
           bg-bg
           border border-border
           rounded-2xl
           shadow-card-hover
-          py-2 mt-1
-          [position-anchor:--sort-btn]
+          py-2
           [position-area:bottom]
           [margin:0]
         "

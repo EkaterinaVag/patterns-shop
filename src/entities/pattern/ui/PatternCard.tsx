@@ -3,23 +3,11 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import type { Pattern } from '../index';
+import { DIFFICULTY_LABELS, DURATION_LABELS } from '../model/labels';
 
 interface PatternCardProps {
     pattern: Pattern;
 }
-
-const difficultyLabels = {
-    beginner: 'Начальный',
-    easy: 'Легкий',
-    medium: 'Средний',
-    hard: 'Высокий',
-};
-
-const durationLabels = {
-    '1h': 'до 1 часа',
-    '2-3h': '2–3 часа',
-    'day': 'весь день',
-};
 
 export function PatternCard({ pattern }: PatternCardProps) {
     return (
@@ -81,8 +69,8 @@ export function PatternCard({ pattern }: PatternCardProps) {
                     mb-2 pb-3
                     border-b border-border
                     ">
-                    <span>Сложность: {difficultyLabels[pattern.difficulty]}</span>
-                    <span>⏱ {durationLabels[pattern.duration]}</span>
+                    <span>Сложность: {DIFFICULTY_LABELS[pattern.difficulty]}</span>
+                    <span>⏱ {DURATION_LABELS[pattern.duration]}</span>
                 </div>
 
                 <div className="flex items-baseline justify-between mt-auto mb-4">
@@ -100,7 +88,7 @@ export function PatternCard({ pattern }: PatternCardProps) {
                     className="
                         w-full
                         bg-blush hover:bg-blush-hover cursor-pointer
-                        text-white font-semibold text-sm
+                        text-ink font-semibold text-sm
                         py-3 rounded-md
                         shadow-button hover:shadow-button-hover
                         transition-all duration-200

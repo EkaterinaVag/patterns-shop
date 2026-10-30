@@ -1,20 +1,28 @@
-export const CATEGORIES = [
-    { id: 'animals', label: 'Животные' },
-    { id: 'flowers', label: 'Цветы' },
-    { id: 'food', label: 'Еда' },
-    { id: 'decor', label: 'Декор' },
-    { id: 'toys', label: 'Игрушки' },
-] as const;
+import {
+  CATEGORY_LABELS,
+  DIFFICULTY_LABELS,
+  DURATION_LABELS,
+} from '@/entities/pattern/model/labels';
 
-export const DIFFICULTIES = [
-    { id: 'beginner', label: 'Начальный' },
-    { id: 'easy', label: 'Легкий' },
-    { id: 'medium', label: 'Средний' },
-    { id: 'hard', label: 'Высокий' },
-] as const;
+const CATEGORY_IDS = ['animals', 'flowers', 'food', 'decor', 'toys'] as const;
+const DIFFICULTY_IDS = ['beginner', 'easy', 'medium', 'hard'] as const;
+const DURATION_IDS = ['1h', '2-3h', 'day'] as const;
 
-export const DURATIONS = [
-    { id: '1h', label: 'до 1 часа' },
-    { id: '2-3h', label: '2-3 часа' },
-    { id: 'day', label: 'Весь день' },
-] as const;
+/**
+ * Опции для фильтров собираются из подписей сущности, чтобы формулировки
+ * в карточке и в фильтрах не расходились.
+ */
+export const CATEGORIES = CATEGORY_IDS.map((id) => ({
+    id,
+    label: CATEGORY_LABELS[id],
+}));
+
+export const DIFFICULTIES = DIFFICULTY_IDS.map((id) => ({
+    id,
+    label: DIFFICULTY_LABELS[id],
+}));
+
+export const DURATIONS = DURATION_IDS.map((id) => ({
+    id,
+    label: DURATION_LABELS[id],
+}));
