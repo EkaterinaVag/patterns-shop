@@ -2,7 +2,7 @@ import {
   CATEGORY_LABELS,
   DIFFICULTY_LABELS,
   DURATION_LABELS,
-} from '@/entities/pattern/model/labels';
+} from '@/entities/pattern/model';
 
 const CATEGORY_IDS = ['animals', 'flowers', 'food', 'decor', 'toys'] as const;
 const DIFFICULTY_IDS = ['beginner', 'easy', 'medium', 'hard'] as const;
