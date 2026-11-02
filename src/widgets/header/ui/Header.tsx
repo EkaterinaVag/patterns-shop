@@ -1,23 +1,17 @@
 'use client';
 
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 import { BurgerButton } from './BurgerButton'
 import { MobileMenu, MOBILE_MENU_ID } from './MobileMenu';
 import { NAV_ITEMS } from '@/widgets/header/model/navigation';
+import { useBodyScrollLock } from '@/shared/lib';
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  useEffect(() => {
-    if (isMenuOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
-    }
-    return () => { document.body.style.overflow = ''; };
-  }, [isMenuOpen]);
+  useBodyScrollLock(isMenuOpen);
 
   return (
     <header className="sticky top-0 z-50

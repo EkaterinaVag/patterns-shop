@@ -1,10 +1,11 @@
 'use client';
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import { Dropdown } from "@/shared/ui/Dropdown";
 import { ViewToggle } from "./ViewToggle";
 import { FilterButton } from "./FilterButton";
 import { FilterModal } from "../filters/FilterModal";
+import { useBodyScrollLock } from "@/shared/lib";
 
 interface CatalogToolbarProps {
     count: number;
@@ -22,14 +23,7 @@ const FILTER_MODAL_ID = 'catalog-filters';
 export function CatalogToolbar({ count }: CatalogToolbarProps) {
     const [isFilterOpen, setIsFilterOpen] = useState(false)
 
-    useEffect(() => {
-        if (isFilterOpen) {
-            document.body.style.overflow = 'hidden';
-        } else {
-            document.body.style.overflow = '';
-        }
-        return () => { document.body.style.overflow = ''; };
-    }, [isFilterOpen]);
+    useBodyScrollLock(isFilterOpen)
 
     return (
         <div className="flex lg:items-center items-start justify-between mb-6 flex-wrap gap-4 border-b border-border pb-3 flex-col-reverse lg:flex-row">
