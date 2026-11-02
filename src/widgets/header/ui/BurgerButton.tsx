@@ -1,14 +1,18 @@
 'use client';
 
+import type { Ref } from 'react';
+
 interface BurgerButtonProps {
     isOpen: boolean;
     controls: string;
     handleClick: () => void;
+    ref?: Ref<HTMLButtonElement>;
 }
 
-export function BurgerButton({ isOpen, controls, handleClick }: BurgerButtonProps) {
+export function BurgerButton({ isOpen, controls, handleClick, ref }: BurgerButtonProps) {
     return (
         <button
+            ref={ref}
             type="button"
             onClick={handleClick}
             aria-label={isOpen ? 'Закрыть меню' : 'Открыть меню'}

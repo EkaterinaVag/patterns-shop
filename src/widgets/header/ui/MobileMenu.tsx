@@ -1,33 +1,97 @@
 'use client';
 
 import Link from 'next/link';
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
+import type { RefObject } from 'react';
 
 import { NAV_ITEMS } from '@/widgets/header/model/navigation';
 
 interface MobileMenuProps {
     isOpen: boolean;
     onClose: () => void;
+    triggerRef: RefObject<HTMLButtonElement | null>;
 }
 
 export const MOBILE_MENU_ID = 'mobile-menu';
 
-export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
+export function MobileMenu({ isOpen, onClose, triggerRef }: MobileMenuProps) {
+    const panelRef = useRef<HTMLDivElement>(null);
+    const closeButtonRef = useRef<HTMLButtonElement>(null);
+
+    // onClose приходит инлайновой стрелкой и меняется на каждом рендере Header:
+    // держим её в ref, чтобы эффект не перезапускался и не перетягивал фокус
+    const onCloseRef = useRef(onClose);
+    useEffect(() => {
+        onCloseRef.current = onClose;
+    }, [onClose]);
+
     useEffect(() => {
         if (!isOpen) return;
 
+        // фокус уходит в открывшуюся панель, а не остаётся на бургере
+        closeButtonRef.current?.focus();
+
         const handleKeyDown = (event: KeyboardEvent) => {
-            if (event.key === 'Escape') onClose();
+            if (event.key === 'Escape') {
+                onCloseRef.current();
+                return;
+            }
+
+            if (event.key !== 'Tab') return;
+
+            const panel = panelRef.current;
+            if (!panel) return;
+
+            const focusable = Array.from(
+                panel.querySelectorAll<HTMLElement>('a[href], button:not([disabled])'),
+            );
+            if (focusable.length === 0) return;
+
+            const first = focusable[0];
+            const last = focusable[focusable.length - 1];
+            const active = document.activeElement;
+
+            // фокус оказался вне панели — заводим его внутрь
+            if (!panel.contains(active)) {
+                event.preventDefault();
+                (event.shiftKey ? last : first).focus();
+                return;
+            }
+
+            if (event.shiftKey && active === first) {
+                event.preventDefault();
+                last.focus();
+            } else if (!event.shiftKey && active === last) {
+                event.preventDefault();
+                first.focus();
+            }
         };
 
         document.addEventListener('keydown', handleKeyDown);
         return () => document.removeEventListener('keydown', handleKeyDown);
-    }, [isOpen, onClose]);
+    }, [isOpen]);
+
+    // закрыли меню — возвращаем фокус на кнопку, которая его открыла
+    const wasOpen = useRef(false);
+    useEffect(() => {
+        if (isOpen) {
+            wasOpen.current = true;
+            return;
+        }
+
+        if (wasOpen.current) {
+            wasOpen.current = false;
+            triggerRef.current?.focus();
+        }
+    }, [isOpen, triggerRef]);
 
     return (
-
         <div
             id={MOBILE_MENU_ID}
+            ref={panelRef}
+            role="dialog"
+            aria-modal="true"
+            aria-label="Меню"
             inert={!isOpen}
             className={`
                     fixed inset-y-0 right-0 w-full overflow-y-auto
@@ -39,6 +103,7 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
         >
             <button
                 type="button"
+                ref={closeButtonRef}
                 onClick={onClose}
                 className="
                         self-end mb-8 p-2 text-muted hover:text-ink cursor-pointer

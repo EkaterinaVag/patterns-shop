@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 
 import { BurgerButton } from './BurgerButton'
 import { MobileMenu, MOBILE_MENU_ID } from './MobileMenu';
@@ -10,6 +10,7 @@ import { useBodyScrollLock } from '@/shared/lib';
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const burgerRef = useRef<HTMLButtonElement>(null);
 
   useBodyScrollLock(isMenuOpen);
 
@@ -39,11 +40,11 @@ export function Header() {
             ))}
           </nav>
 
-          <BurgerButton isOpen={isMenuOpen} controls={MOBILE_MENU_ID} handleClick={() => setIsMenuOpen((open) => !open)} />
+          <BurgerButton ref={burgerRef} isOpen={isMenuOpen} controls={MOBILE_MENU_ID} handleClick={() => setIsMenuOpen((open) => !open)} />
         </div>
       </header>
 
-      <MobileMenu isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
+      <MobileMenu isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} triggerRef={burgerRef} />
     </>
   );
 }
