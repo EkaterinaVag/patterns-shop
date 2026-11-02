@@ -2,7 +2,8 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import type { Pattern } from '../index';
+
+import type { Pattern } from '../model/types';
 import { DIFFICULTY_LABELS, DURATION_LABELS } from '../model/labels';
 
 interface PatternCardProps {

@@ -1,4 +1,4 @@
-import type { Pattern } from '@/entities/pattern/model/types';
+import type { Pattern } from '@/entities/pattern/model';
 
 export const MOCK_PATTERNS: Pattern[] = [
   {
@@ -11,7 +11,7 @@ export const MOCK_PATTERNS: Pattern[] = [
     badges: ['Хит'],
     category: 'animals',
     description: null,
-    createdAt: 2,
+    createdAt: Date.UTC(2024, 10, 1),
     views: 3,
   },
   {
@@ -23,8 +23,9 @@ export const MOCK_PATTERNS: Pattern[] = [
     duration: '2-3h',
     badges: ['Новинка'],
     category: 'animals',
-    description: null,
-    createdAt: 2,
+    description:
+      'Снегирь из фетра — одна из самых узнаваемых зимних игрушек: яркая грудка, чёрная шапочка и аккуратный хвостик. В набор входит выкройка в натуральную величину, схема сборки и список материалов. Высота готовой игрушки — около 12 см. Подойдёт для новогоднего декора, ёлочных гирлянд и небольших подарков. Рекомендуется плотный фетр 1,5–2 мм и мулине в тон, чтобы игрушка держала форму и не осыпалась по краям.',
+    createdAt: Date.UTC(2024, 10, 15),
     views: 454,
   },
   {
@@ -36,8 +37,9 @@ export const MOCK_PATTERNS: Pattern[] = [
     duration: 'day',
     badges: [],
     category: 'decor',
-    description: null,
-    createdAt: 2,
+    description:
+      'Простая выкройка Деда Мороза из фетра: три детали, минимум швов, высота готовой фигурки — 15 см.',
+    createdAt: Date.UTC(2024, 11, 1),
     views: 311,
   },
   {
@@ -49,8 +51,9 @@ export const MOCK_PATTERNS: Pattern[] = [
     duration: '1h',
     badges: ['Эксклюзив'],
     category: 'animals',
-    description: null,
-    createdAt: 2,
+    description:
+      'Полярный мишка из фетра — милая игрушка для зимнего декора. Выкройка рассчитана на новичков: все детали крупные, а сборка занимает около часа.',
+    createdAt: Date.UTC(2024, 11, 20),
     views: 322,
   },
   {
@@ -63,7 +66,7 @@ export const MOCK_PATTERNS: Pattern[] = [
     badges: [],
     category: 'toys',
     description: null,
-    createdAt: 2,
+    createdAt: Date.UTC(2025, 0, 10),
     views: 3,
   },
   {
@@ -75,8 +78,8 @@ export const MOCK_PATTERNS: Pattern[] = [
     duration: '1h',
     badges: ['Хит'],
     category: 'toys',
-    description: null,
-    createdAt: 2,
+    description: 'Ёлочка из трёх деталей — самая быстрая выкройка в каталоге.',
+    createdAt: Date.UTC(2025, 1, 5),
     views: 3,
   },
   {
@@ -88,8 +91,9 @@ export const MOCK_PATTERNS: Pattern[] = [
     duration: 'day',
     badges: [],
     category: 'animals',
-    description: null,
-    createdAt: 2,
+    description:
+      'Олень с объёмными рогами из фетра — выкройка для тех, кто уже пробовал шить игрушки. В инструкции подробно разобрана набивка рогов, чтобы они держали форму, и два варианта крепления: на подставке и как ёлочная подвеска. Высота — 18 см, расход материала — один лист А4.',
+    createdAt: Date.UTC(2025, 2, 1),
     views: 3,
   },
   {
@@ -101,8 +105,8 @@ export const MOCK_PATTERNS: Pattern[] = [
     duration: '2-3h',
     badges: ['Новинка'],
     category: 'animals',
-    description: null,
-    createdAt: 2,
+    description: 'Пингвин из фетра: четыре детали, немного синтепона и час на сборку.',
+    createdAt: Date.UTC(2025, 3, 10),
     views: 3,
   },
   {
@@ -115,7 +119,7 @@ export const MOCK_PATTERNS: Pattern[] = [
     badges: ['Хит'],
     category: 'animals',
     description: null,
-    createdAt: 2,
+    createdAt: Date.UTC(2025, 4, 2),
     views: 3,
   },
   {
@@ -127,8 +131,8 @@ export const MOCK_PATTERNS: Pattern[] = [
     duration: '1h',
     badges: ['Новинка'],
     category: 'animals',
-    description: null,
-    createdAt: 2,
+    description: 'Снегирь из фетра с объёмной грудкой. Подходит для ёлочных гирлянд.',
+    createdAt: Date.UTC(2025, 5, 12),
     views: 3,
   },
   {
@@ -140,8 +144,9 @@ export const MOCK_PATTERNS: Pattern[] = [
     duration: '1h',
     badges: [],
     category: 'decor',
-    description: null,
-    createdAt: 2,
+    description:
+      'Дед Мороз в упрощённой версии: без мелких деталей, с плоской бородой. Хороший вариант для первого опыта с фетром.',
+    createdAt: Date.UTC(2025, 6, 3),
     views: 3,
   },
   {
@@ -154,7 +159,7 @@ export const MOCK_PATTERNS: Pattern[] = [
     badges: ['Эксклюзив'],
     category: 'animals',
     description: null,
-    createdAt: 2,
+    createdAt: Date.UTC(2025, 7, 8),
     views: 3,
   },
   {
@@ -166,8 +171,8 @@ export const MOCK_PATTERNS: Pattern[] = [
     duration: '1h',
     badges: [],
     category: 'toys',
-    description: null,
-    createdAt: 2,
+    description: 'Снеговик из фетра: два круга, ведро и морковка. Высота — 14 см.',
+    createdAt: Date.UTC(2025, 8, 1),
     views: 31,
   },
   {
@@ -180,7 +185,7 @@ export const MOCK_PATTERNS: Pattern[] = [
     badges: ['Хит'],
     category: 'toys',
     description: null,
-    createdAt: 2,
+    createdAt: Date.UTC(2025, 8, 20),
     views: 35,
   },
   {
@@ -192,8 +197,9 @@ export const MOCK_PATTERNS: Pattern[] = [
     duration: '1h',
     badges: [],
     category: 'animals',
-    description: null,
-    createdAt: 2,
+    description:
+      'Олень без объёмных рогов — быстрый вариант той же игрушки. Всё, что нужно: фетр двух цветов, нитки и полчаса времени.',
+    createdAt: Date.UTC(2025, 9, 5),
     views: 3,
   },
   {
@@ -205,8 +211,8 @@ export const MOCK_PATTERNS: Pattern[] = [
     duration: '2-3h',
     badges: ['Новинка'],
     category: 'animals',
-    description: null,
-    createdAt: 2,
+    description: 'Пингвин в шарфе: пять деталей, шарф вяжется крючком.',
+    createdAt: Date.UTC(2025, 9, 25),
     views: 3,
   },
-]; 
+];
