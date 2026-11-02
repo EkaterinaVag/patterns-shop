@@ -10,15 +10,21 @@ interface PatternCardListProps {
     pattern: Pattern;
 }
 
+/**
+ * Горизонтальный вариант карточки для режима «список».
+ * Классы написаны mobile-first: базовые стили — под 320–639px,
+ * дальше только добавления через sm: (≥640) и lg: (≥1024).
+ */
 export function PatternCardList({ pattern }: PatternCardListProps) {
     return (
         <article
             className="
-                group flex overflow-hidden min-h-[215px]
+                group flex overflow-hidden
                 bg-bg rounded-lg
                 border border-border
                 shadow-card hover:shadow-card-hover
                 transition-all duration-300 ease-out
+                sm:min-h-[200px] md:min-h-[215px]
             "
         >
             <Link
@@ -63,28 +69,26 @@ export function PatternCardList({ pattern }: PatternCardListProps) {
                     </h3>
                 </Link>
 
-                <p className="flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-muted">
+                <p className="flex flex-wrap items-center gap-x-1.5 gap-y-1 text-xs text-muted sm:gap-x-2">
                     <span>{DIFFICULTY_LABELS[pattern.difficulty]}</span>
                     <span aria-hidden="true">·</span>
                     <span>⏱ {DURATION_LABELS[pattern.duration]}</span>
-                    <span aria-hidden="true" className="hidden sm:inline">·</span>
-                    <span className="hidden sm:inline">{CATEGORY_LABELS[pattern.category]}</span>
+                    <span aria-hidden="true">·</span>
+                    <span>{CATEGORY_LABELS[pattern.category]}</span>
                 </p>
 
                 {pattern.description && (
-                    <div className="hidden sm:block">
-                        <p className="text-sm leading-relaxed text-muted line-clamp-2">
-                            {pattern.description}
-                        </p>
-                    </div>
+                    <p className="hidden md:line-clamp-2 text-sm leading-relaxed text-muted">
+                        {pattern.description}
+                    </p>
                 )}
 
-                <div className="mt-auto flex flex-wrap items-end justify-between gap-3 pt-1">
+                <div className="mt-auto flex flex-wrap items-end justify-between gap-2 pt-1 sm:gap-3">
                     <p className="flex flex-col">
                         <span className="hidden text-xs text-muted sm:block">
                             Стоимость выкройки
                         </span>
-                        <span className="text-lg font-bold text-ink sm:text-xl">
+                        <span className="text-base font-bold text-ink sm:text-xl">
                             {pattern.price} ₽
                         </span>
                     </p>
@@ -96,13 +100,13 @@ export function PatternCardList({ pattern }: PatternCardListProps) {
                         }}
                         className="
                             w-full cursor-pointer rounded-md
-                            bg-blush px-6 py-2.5
+                            bg-blush px-4 py-2.5
                             text-sm font-semibold text-ink
                             shadow-button transition-all duration-200
                             hover:bg-blush-hover hover:shadow-button-hover
                             focus-visible:outline-none
                             focus-visible:ring-2 focus-visible:ring-blush-strong focus-visible:ring-offset-2
-                            sm:w-auto
+                            sm:w-auto sm:px-6
                         "
                     >
                         Купить выкройку
