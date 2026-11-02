@@ -12,7 +12,7 @@ interface MobileMenuProps {
 
 export const MOBILE_MENU_ID = 'mobile-menu';
 
-export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
+export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
     useEffect(() => {
         if (!isOpen) return;
 

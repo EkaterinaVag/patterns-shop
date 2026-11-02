@@ -3,8 +3,8 @@
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
-import BurgerButton from './BurgerButton'
-import MobileMenu, { MOBILE_MENU_ID } from './MobileMenu';
+import { BurgerButton } from './BurgerButton'
+import { MobileMenu, MOBILE_MENU_ID } from './MobileMenu';
 import { NAV_ITEMS } from '@/widgets/header/model/navigation';
 
 export function Header() {

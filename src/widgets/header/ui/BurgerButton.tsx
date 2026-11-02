@@ -6,7 +6,7 @@ interface BurgerButtonProps {
     handleClick: () => void;
 }
 
-export default function BurgerButton({ isOpen, controls, handleClick }: BurgerButtonProps) {
+export function BurgerButton({ isOpen, controls, handleClick }: BurgerButtonProps) {
     return (
         <button
             type="button"

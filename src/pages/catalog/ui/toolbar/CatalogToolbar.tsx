@@ -3,8 +3,8 @@ import { useEffect, useState } from "react";
 
 import { Dropdown } from "@/shared/ui/Dropdown";
 import { ViewToggle } from "./ViewToggle";
-import FilterButton from "./FilterButton";
-import { FilterModal } from "./FilterModal";
+import { FilterButton } from "./FilterButton";
+import { FilterModal } from "../filters/FilterModal";
 
 interface CatalogToolbarProps {
     count: number;

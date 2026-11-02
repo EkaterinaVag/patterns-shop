@@ -1,5 +1,5 @@
-import { FilterSidebar } from './FilterSidebar';
-import { CatalogToolbar } from './CatalogToolbar';
+import { FilterSidebar } from './filters/FilterSidebar';
+import { CatalogToolbar } from './toolbar/CatalogToolbar';
 
 import { BreadcrumbItem, Breadcrumbs } from '@/shared/ui';
 import { MOCK_PATTERNS } from '@/shared/api';

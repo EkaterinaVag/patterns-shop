@@ -6,7 +6,7 @@ interface FilterButtonProps {
     handleClick: () => void;
 }
 
-export default function FilterButton({ isOpen, controls, handleClick }: FilterButtonProps) {
+export function FilterButton({ isOpen, controls, handleClick }: FilterButtonProps) {
     return (
         <button
             type="button"

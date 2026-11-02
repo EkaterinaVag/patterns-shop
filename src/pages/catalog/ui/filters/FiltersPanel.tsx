@@ -1,7 +1,7 @@
 import { CATEGORIES, DIFFICULTIES, DURATIONS } from '@/features/filter-patterns/model/constants';
-import { FilterGroup } from './filters/FilterGroup';
-import { FilterPill } from './filters/FilterPill';
-import { SearchInput } from './filters/SearchInput';
+import { FilterGroup } from './FilterGroup';
+import { FilterPill } from './FilterPill';
+import { SearchInput } from './SearchInput';
 
 interface FiltersPanelProps {
   idPrefix: string;
