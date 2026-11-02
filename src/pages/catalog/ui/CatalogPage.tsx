@@ -1,9 +1,12 @@
+import { Suspense } from 'react';
+
 import { FilterSidebar } from './filters/FilterSidebar';
 import { CatalogToolbar } from './toolbar/CatalogToolbar';
 
 import { BreadcrumbItem, Breadcrumbs } from '@/shared/ui';
 import { MOCK_PATTERNS } from '@/shared/api';
 import { CatalogGrid } from './CatalogGrid';
+import { Pagination } from './Pagination';
 
 const breadcrumbs: BreadcrumbItem[] = [
     { label: 'Главная', href: '/' },
@@ -11,6 +14,7 @@ const breadcrumbs: BreadcrumbItem[] = [
 ];
 
 const title = 'Каталог выкроек'
+const totalPages = 2
 
 export function CatalogPage() {
     return (
@@ -42,6 +46,10 @@ export function CatalogPage() {
                         <div>
                             <CatalogToolbar count={MOCK_PATTERNS.length} />
                             <CatalogGrid patterns={MOCK_PATTERNS} />
+                            {/* useSearchParams требует Suspense при статическом пререндере */}
+                            <Suspense fallback={<div aria-hidden="true" className="mt-10 h-10" />}>
+                                <Pagination totalPages={totalPages} />
+                            </Suspense>
                         </div>
                     </div>
                 </div>
