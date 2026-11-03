@@ -15,7 +15,7 @@ export function FilterButton({ isOpen, controls, handleClick }: FilterButtonProp
             className='
           lg:hidden
           flex items-center justify-between
-          px-5 py-2.5 rounded-full
+          px-4 py-2.5 rounded-full
           border border-border bg-bg
           text-sm text-ink
           cursor-pointer

@@ -1,7 +1,7 @@
 'use client';
 import { useState } from "react";
 
-import { Dropdown } from "@/shared/ui/Dropdown";
+import { SortDropdown } from "./SortDropdown";
 import { ViewToggle } from "./ViewToggle";
 import { FilterButton } from "./FilterButton";
 import { FilterModal } from "../filters/FilterModal";
@@ -11,17 +11,11 @@ interface CatalogToolbarProps {
     count: number;
 }
 
-const SORT_OPTIONS = [
-    { value: 'popular', label: 'Сначала популярные' },
-    { value: 'new', label: 'Сначала новые' },
-    { value: 'price-asc', label: 'По возрастанию цены' },
-    { value: 'price-desc', label: 'По убыванию цены' },
-]
-
 const FILTER_MODAL_ID = 'catalog-filters';
 
 export function CatalogToolbar({ count }: CatalogToolbarProps) {
     const [isFilterOpen, setIsFilterOpen] = useState(false)
+    const [sort, setSort] = useState('popular');
 
     useBodyScrollLock(isFilterOpen)
 
@@ -33,14 +27,7 @@ export function CatalogToolbar({ count }: CatalogToolbarProps) {
                     controls={FILTER_MODAL_ID}
                     handleClick={() => { setIsFilterOpen(true) }}
                 />
-                <Dropdown
-                    options={SORT_OPTIONS}
-                    defaultValue="popular"
-                // onChange={(value) => {
-                //     // TODO: обновить URL
-                //     console.log('sort:', value);
-                // }}
-                />
+                <SortDropdown value={sort} onChange={setSort} />
             </div>
 
             <div className="flex gap-6 items-center justify-between w-full lg:w-fit">
