@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { useEffect, useRef } from 'react';
+import { useEffect, useEffectEvent, useRef } from 'react';
 import type { RefObject } from 'react';
 
 import { NAV_ITEMS } from '@/widgets/header/model/navigation';
@@ -18,12 +18,14 @@ export function MobileMenu({ isOpen, onClose, triggerRef }: MobileMenuProps) {
     const panelRef = useRef<HTMLDivElement>(null);
     const closeButtonRef = useRef<HTMLButtonElement>(null);
 
-    // onClose приходит инлайновой стрелкой и меняется на каждом рендере Header:
-    // держим её в ref, чтобы эффект не перезапускался и не перетягивал фокус
-    const onCloseRef = useRef(onClose);
-    useEffect(() => {
-        onCloseRef.current = onClose;
-    }, [onClose]);
+    // закрытие меню всегда возвращает фокус на бургер
+    const closeMenu = () => {
+        onClose();
+        triggerRef.current?.focus();
+    };
+
+    // Effect Event видит актуальный closeMenu, но не перезапускает эффект
+    const closeMenuFromEffect = useEffectEvent(closeMenu);
 
     useEffect(() => {
         if (!isOpen) return;
@@ -33,7 +35,7 @@ export function MobileMenu({ isOpen, onClose, triggerRef }: MobileMenuProps) {
 
         const handleKeyDown = (event: KeyboardEvent) => {
             if (event.key === 'Escape') {
-                onCloseRef.current();
+                closeMenuFromEffect();
                 return;
             }
 
@@ -71,20 +73,6 @@ export function MobileMenu({ isOpen, onClose, triggerRef }: MobileMenuProps) {
         return () => document.removeEventListener('keydown', handleKeyDown);
     }, [isOpen]);
 
-    // закрыли меню — возвращаем фокус на кнопку, которая его открыла
-    const wasOpen = useRef(false);
-    useEffect(() => {
-        if (isOpen) {
-            wasOpen.current = true;
-            return;
-        }
-
-        if (wasOpen.current) {
-            wasOpen.current = false;
-            triggerRef.current?.focus();
-        }
-    }, [isOpen, triggerRef]);
-
     return (
         <div
             id={MOBILE_MENU_ID}
@@ -104,7 +92,7 @@ export function MobileMenu({ isOpen, onClose, triggerRef }: MobileMenuProps) {
             <button
                 type="button"
                 ref={closeButtonRef}
-                onClick={onClose}
+                onClick={closeMenu}
                 className="
                         self-end mb-8 p-2 text-muted hover:text-ink cursor-pointer
                         rounded-md
@@ -127,7 +115,7 @@ export function MobileMenu({ isOpen, onClose, triggerRef }: MobileMenuProps) {
                     <Link
                         key={item.href}
                         href={item.href}
-                        onClick={onClose}
+                        onClick={closeMenu}
                         className="text-ink hover:text-blush-strong transition-colors"
                     >
                         {item.label}

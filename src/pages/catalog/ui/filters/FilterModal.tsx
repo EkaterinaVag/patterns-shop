@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useId, useRef } from 'react';
+import { useEffect, useEffectEvent, useId, useRef } from 'react';
 
 import { FiltersPanel } from './FiltersPanel';
 
@@ -11,13 +11,12 @@ interface FilterModalProps {
 
 export function FilterModal({ id, onClose }: FilterModalProps) {
   const dialogRef = useRef<HTMLDialogElement>(null);
-  const onCloseRef = useRef(onClose);
 
   const titleId = useId();
 
-  useEffect(() => {
-    onCloseRef.current = onClose;
-  }, [onClose]);
+  // Effect Event видит свежий onClose, но не является зависимостью эффекта:
+  // пересоздание диалога при ререндере родителя не происходит
+  const closeModal = useEffectEvent(onClose);
 
   useEffect(() => {
     const dialog = dialogRef.current;
@@ -27,7 +26,7 @@ export function FilterModal({ id, onClose }: FilterModalProps) {
 
     const handleCancel = (event: Event) => {
       event.preventDefault();
-      onCloseRef.current();
+      closeModal();
     };
 
     dialog.addEventListener('cancel', handleCancel);
@@ -41,7 +40,7 @@ export function FilterModal({ id, onClose }: FilterModalProps) {
   useEffect(() => {
     const media = window.matchMedia('(min-width: 1024px)');
     const handleChange = () => {
-      if (media.matches) onCloseRef.current();
+      if (media.matches) closeModal();
     };
 
     media.addEventListener('change', handleChange);
@@ -54,7 +53,7 @@ export function FilterModal({ id, onClose }: FilterModalProps) {
       ref={dialogRef}
       aria-labelledby={titleId}
       onClick={(event) => {
-        if (event.target === event.currentTarget) onCloseRef.current();
+        if (event.target === event.currentTarget) onClose();
       }}
       className="
         fixed inset-x-0 bottom-0 top-auto m-0 w-full max-w-none
@@ -69,7 +68,7 @@ export function FilterModal({ id, onClose }: FilterModalProps) {
           <h2 id={titleId} className="text-xl font-serif">Фильтры</h2>
           <button
             type="button"
-            onClick={() => onCloseRef.current()}
+            onClick={() => onClose()}
             aria-label="Закрыть"
             className="
               rounded-md p-2 text-muted hover:text-ink cursor-pointer
@@ -91,7 +90,7 @@ export function FilterModal({ id, onClose }: FilterModalProps) {
         <div className="border-t border-border bg-bg p-4">
           <button
             type="button"
-            onClick={() => onCloseRef.current()}
+            onClick={() => onClose()}
             className="
               w-full rounded-full bg-blush py-3 font-semibold text-ink
               transition-colors hover:bg-blush-hover cursor-pointer
