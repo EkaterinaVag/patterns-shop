@@ -3,3 +3,5 @@ export type { BreadcrumbItem } from './Breadcrumbs';
 
 export { Dropdown } from './Dropdown';
 export type { DropdownOption } from './Dropdown';
+
+export { Dialog } from './Dialog';

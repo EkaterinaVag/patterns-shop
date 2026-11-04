@@ -5,7 +5,6 @@ import { SortDropdown } from "./SortDropdown";
 import { ViewToggle } from "./ViewToggle";
 import { FilterButton } from "./FilterButton";
 import { FilterModal } from "../filters/FilterModal";
-import { useBodyScrollLock } from "@/shared/lib";
 
 interface CatalogToolbarProps {
     count: number;
@@ -16,8 +15,6 @@ const FILTER_MODAL_ID = 'catalog-filters';
 export function CatalogToolbar({ count }: CatalogToolbarProps) {
     const [isFilterOpen, setIsFilterOpen] = useState(false)
     const [sort, setSort] = useState('popular');
-
-    useBodyScrollLock(isFilterOpen)
 
     return (
         <div className="flex lg:items-center items-start justify-between mb-6 flex-wrap gap-4 border-b border-border pb-3 flex-col-reverse lg:flex-row">
