@@ -2,9 +2,17 @@ interface FilterPillProps {
   id: string;
   label: string;
   name: string;
+  checked: boolean;
+  onCheckedChange: (checked: boolean) => void;
 }
 
-export function FilterPill({ id, label, name }: FilterPillProps) {
+export function FilterPill({
+  id,
+  label,
+  name,
+  checked,
+  onCheckedChange,
+}: FilterPillProps) {
   return (
     <label
       htmlFor={id}
@@ -25,6 +33,8 @@ export function FilterPill({ id, label, name }: FilterPillProps) {
         type="checkbox"
         id={id}
         name={name}
+        checked={checked}
+        onChange={(event) => onCheckedChange(event.target.checked)}
         className="sr-only"
       />
       {label}

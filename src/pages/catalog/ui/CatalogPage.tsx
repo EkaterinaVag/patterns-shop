@@ -1,10 +1,11 @@
-import { Suspense } from 'react';
+import { notFound } from 'next/navigation';
+
+import { getPatterns } from '@/features/filter-patterns';
 
 import { FilterSidebar } from './filters/FilterSidebar';
 import { CatalogToolbar } from './toolbar/CatalogToolbar';
 
 import { BreadcrumbItem, Breadcrumbs } from '@/shared/ui';
-import { MOCK_PATTERNS } from '@/shared/api';
 import { CatalogGrid } from './CatalogGrid';
 import { Pagination } from './Pagination';
 
@@ -13,10 +14,20 @@ const breadcrumbs: BreadcrumbItem[] = [
     { label: 'Каталог выкроек' },
 ];
 
-const title = 'Каталог выкроек'
-const totalPages = 2
+const title = 'Каталог выкроек';
 
-export function CatalogPage() {
+interface CatalogPageProps {
+    searchParams: Promise<Record<string, string | string[] | undefined>>;
+}
+
+export async function CatalogPage({ searchParams }: CatalogPageProps) {
+    const result = getPatterns(await searchParams);
+    const data = result.ok ? result : getPatterns({});
+
+    if (!data.ok) notFound();
+
+    const { items, total, totalPages } = data.data;
+
     return (
         <>
             <section
@@ -44,12 +55,17 @@ export function CatalogPage() {
                         <FilterSidebar />
 
                         <div>
-                            <CatalogToolbar count={MOCK_PATTERNS.length} />
-                            <CatalogGrid patterns={MOCK_PATTERNS} />
-                            {/* useSearchParams требует Suspense при статическом пререндере */}
-                            <Suspense fallback={<div aria-hidden="true" className="mt-10 h-10" />}>
-                                <Pagination totalPages={totalPages} />
-                            </Suspense>
+                            <CatalogToolbar count={total} />
+
+                            {items.length > 0 ? (
+                                <CatalogGrid patterns={items} />
+                            ) : (
+                                <p className="py-16 text-center text-muted">
+                                    По выбранным фильтрам ничего не нашлось.
+                                </p>
+                            )}
+
+                            <Pagination totalPages={totalPages} />
                         </div>
                     </div>
                 </div>

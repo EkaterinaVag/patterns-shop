@@ -1,4 +1,8 @@
+'use client';
+
+import { useFilters } from '@/features/filter-patterns';
 import { CATEGORIES, DIFFICULTIES, DURATIONS } from '@/features/filter-patterns/model/constants';
+
 import { FilterGroup } from './FilterGroup';
 import { FilterPill } from './FilterPill';
 import { SearchInput } from './SearchInput';
@@ -8,6 +12,8 @@ interface FiltersPanelProps {
 }
 
 export function FiltersPanel({ idPrefix }: FiltersPanelProps) {
+  const { getFilter, setFilter } = useFilters();
+
   return (
     <>
       <SearchInput />
@@ -19,6 +25,8 @@ export function FiltersPanel({ idPrefix }: FiltersPanelProps) {
             id={`${idPrefix}-${cat.id}`}
             label={cat.label}
             name="category"
+            checked={getFilter('category') === cat.id}
+            onCheckedChange={(checked) => setFilter('category', checked ? cat.id : null)}
           />
         ))}
       </FilterGroup>
@@ -30,6 +38,8 @@ export function FiltersPanel({ idPrefix }: FiltersPanelProps) {
             id={`${idPrefix}-${diff.id}`}
             label={diff.label}
             name="difficulty"
+            checked={getFilter('difficulty') === diff.id}
+            onCheckedChange={(checked) => setFilter('difficulty', checked ? diff.id : null)}
           />
         ))}
       </FilterGroup>
@@ -41,6 +51,8 @@ export function FiltersPanel({ idPrefix }: FiltersPanelProps) {
             id={`${idPrefix}-${dur.id}`}
             label={dur.label}
             name="duration"
+            checked={getFilter('duration') === dur.id}
+            onCheckedChange={(checked) => setFilter('duration', checked ? dur.id : null)}
           />
         ))}
       </FilterGroup>

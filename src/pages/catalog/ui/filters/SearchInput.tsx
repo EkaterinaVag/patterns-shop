@@ -1,8 +1,37 @@
+'use client';
+
+import { useEffect, useState } from 'react';
+
+import { useFilters } from '@/features/filter-patterns';
+
 interface SearchInputProps {
   placeholder?: string;
 }
 
 export function SearchInput({ placeholder = 'Поиск по выкройкам' }: SearchInputProps) {
+  const { getFilter, setFilter } = useFilters();
+  const urlValue = getFilter('search') ?? '';
+  const [value, setValue] = useState(urlValue);
+  const [syncedUrlValue, setSyncedUrlValue] = useState(urlValue);
+
+  // если URL изменился извне (назад/вперёд), подстраиваем поле во время рендера
+  // https://react.dev/learn/you-might-not-need-an-effect#adjusting-some-state-when-a-prop-changes
+  if (urlValue !== syncedUrlValue) {
+    setSyncedUrlValue(urlValue);
+    setValue(urlValue);
+  }
+
+  // дебаунс, чтобы не пушить историю на каждую букву
+  useEffect(() => {
+    if (value === urlValue) return;
+
+    const timeout = setTimeout(() => {
+      setFilter('search', value.trim() || null);
+    }, 300);
+
+    return () => clearTimeout(timeout);
+  }, [value, urlValue, setFilter]);
+
   return (
     <div className="relative mb-6">
       <svg
@@ -22,6 +51,8 @@ export function SearchInput({ placeholder = 'Поиск по выкройкам'
       <input
         type="search"
         name="search"
+        value={value}
+        onChange={(event) => setValue(event.target.value)}
         aria-label={placeholder}
         placeholder={placeholder}
         className="
@@ -33,6 +64,7 @@ export function SearchInput({ placeholder = 'Поиск по выкройкам'
           text-sm text-ink
           placeholder:text-muted
           focus:outline-none focus:border-blush
+          focus-visible:ring-2 focus-visible:ring-blush-strong focus-visible:ring-offset-2
           transition-colors
         "
       />
